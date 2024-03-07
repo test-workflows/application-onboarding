@@ -22,7 +22,7 @@ states:
     actions:
       - name: getDefaultWorkflowOptions
         actionDataFilter:
-          toStateData: '. +={workflowOptions: {currentVersion: {id: "", name: ""}, "upgradeOptions": [], "migrationOptions": [], "newOptions": [], "continuationOptions": [], "otherOptions": []}}'
+          toStateData: '. +={workflowOptions: {currentVersion: {id: "", name: ""}, "upgradeOptions": ["move2kube", "Move2Kube"], "migrationOptions": ["greeting", "Greeting"], "newOptions": ["MTAanalysis", "MTA analysis"], "continuationOptions": [], "otherOptions": []}}'
     stateDataFilter:
       output: 
     end: true
