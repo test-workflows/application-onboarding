@@ -1,0 +1,68 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: project6-template
+  generatename: ""
+  namespace: ""
+  selflink: ""
+  uid: ""
+  resourceversion: ""
+  generation: 0
+  creationtimestamp: "0001-01-01T00:00:00Z"
+  deletiontimestamp: null
+  deletiongraceperiodseconds: null
+  labels: {}
+  annotations: {}
+  ownerreferences: []
+  finalizers: []
+  zzz_deprecatedclustername: ""
+  managedfields: []
+objects:
+  - apiVersion: build.openshift.io/v1
+    kind: BuildConfig
+    metadata:
+      creationTimestamp: null
+      name: project6-clone-build-push-application-onboarding
+    spec:
+      nodeSelector: null
+      output:
+        to:
+          kind: ImageStreamTag
+          name: application-onboarding-latest:latest
+      postCommit: {}
+      resources: {}
+      source:
+        git:
+          ref: main
+          uri: ""
+        sourceSecret:
+          name: project6-git-repo-github-com
+        type: Git
+      strategy:
+        dockerStrategy:
+          dockerfilePath: '<TODO: insert path to the Dockerfile>'
+        type: Docker
+      triggers:
+        - generic:
+            secretReference:
+              name: project6-web-hook-application-onboarding
+          type: Generic
+    status:
+      lastVersion: 0
+  - apiVersion: v1
+    data:
+      ssh-privatekey: PFRPRE86IGluc2VydCB0aGUgcHJpdmF0ZSBzc2gga2V5IGZvciB5b3VyIGdpdCByZXBvPg==
+    kind: Secret
+    metadata:
+      creationTimestamp: null
+      name: project6-git-repo-github-com
+    type: kubernetes.io/ssh-auth
+  - apiVersion: v1
+    data:
+      WebHookSecretKey: MTcwNjUyOWEyZmU5NDk3Yw==
+    kind: Secret
+    metadata:
+      creationTimestamp: null
+      name: project6-web-hook-application-onboarding
+    type: Opaque
+parameters: []

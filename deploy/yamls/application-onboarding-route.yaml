@@ -1,0 +1,21 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    move2kube.konveyor.io/service: application-onboarding
+  name: application-onboarding
+spec:
+  host: project6.com
+  path: /application-onboarding
+  port:
+    targetPort: port-8080
+  tls:
+    termination: passthrough
+  to:
+    kind: Service
+    name: application-onboarding
+    weight: 1
+status:
+  ingress:
+    - {}

@@ -1,0 +1,21 @@
+
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+    creationTimestamp: null
+    name: project6-git-repo
+spec:
+    namespaceSelector: {}
+    resources: {}
+    serviceAccountName: project6-tekton-triggers-admin
+    triggers:
+        - bindings:
+            - ref: project6-git-event
+          template:
+            ref: project6-run-clone-build-push
+status:
+    configuration:
+        generatedName: ""
+
+...

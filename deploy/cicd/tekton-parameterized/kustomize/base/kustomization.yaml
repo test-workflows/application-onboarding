@@ -1,0 +1,12 @@
+resources:
+  - project6-tekton-triggers-admin-role.yaml
+  - project6-git-event-triggerbinding.yaml
+  - project6-clone-push-serviceaccount.yaml
+  - project6-git-repo-eventlistener.yaml
+  - project6-git-repo-github-com-secret.yaml
+  - project6-git-repo-route.yaml
+  - project6-image-registry-secret.yaml
+  - project6-run-clone-build-push-triggertemplate.yaml
+  - project6-tekton-triggers-admin-rolebinding.yaml
+  - project6-clone-build-push-pipeline.yaml
+  - project6-tekton-triggers-admin-serviceaccount.yaml

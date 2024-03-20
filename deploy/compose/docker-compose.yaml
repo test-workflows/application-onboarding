@@ -1,0 +1,8 @@
+version: "3.5"
+services:
+  application-onboarding:
+    container_name: application-onboarding
+    image: quay.io/project6/application-onboarding:latest
+    ports:
+      - target: 8080
+        published: 8080

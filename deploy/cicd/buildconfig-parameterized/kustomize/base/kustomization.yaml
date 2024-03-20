@@ -1,0 +1,4 @@
+resources:
+  - project6-clone-build-push-application-onboarding-buildconfig.yaml
+  - project6-git-repo-github-com-secret.yaml
+  - project6-web-hook-application-onboarding-secret.yaml
