@@ -1,0 +1,34 @@
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    creationTimestamp: null
+    labels:
+        move2kube.konveyor.io/service: application-onboarding
+    name: application-onboarding
+spec:
+    replicas: {{ index .Values "common" "replicas" }}
+    selector:
+        matchLabels:
+            move2kube.konveyor.io/service: application-onboarding
+    strategy: {}
+    template:
+        metadata:
+            creationTimestamp: null
+            labels:
+                move2kube.konveyor.io/service: application-onboarding
+            name: application-onboarding
+        spec:
+            containers:
+                - image: quay.io/project2/application-onboarding:latest
+                  imagePullPolicy: Always
+                  name: application-onboarding
+                  ports:
+                    - containerPort: 8080
+                  resources: {}
+            restartPolicy: Always
+            securityContext: {}
+status: {}
+
+...

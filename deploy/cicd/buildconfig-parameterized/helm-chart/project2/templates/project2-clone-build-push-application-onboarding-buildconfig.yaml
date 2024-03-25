@@ -1,0 +1,35 @@
+
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+    creationTimestamp: null
+    name: project2-clone-build-push-application-onboarding
+spec:
+    nodeSelector: null
+    output:
+        to:
+            kind: ImageStreamTag
+            name: application-onboarding-latest:latest
+    postCommit: {}
+    resources: {}
+    source:
+        git:
+            ref: main
+            uri: ""
+        sourceSecret:
+            name: project2-git-repo-github-com
+        type: Git
+    strategy:
+        dockerStrategy:
+            dockerfilePath: '<TODO: insert path to the Dockerfile>'
+        type: Docker
+    triggers:
+        - generic:
+            secretReference:
+                name: project2-web-hook-application-onboarding
+          type: Generic
+status:
+    lastVersion: 0
+
+...

@@ -1,0 +1,5 @@
+resources:
+  - application-onboarding-deployment.yaml
+  - application-onboarding-latest-imagestream.yaml
+  - application-onboarding-route.yaml
+  - application-onboarding-service.yaml

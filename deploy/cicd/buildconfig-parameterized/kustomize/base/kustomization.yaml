@@ -1,0 +1,4 @@
+resources:
+  - project2-clone-build-push-application-onboarding-buildconfig.yaml
+  - project2-git-repo-github-com-secret.yaml
+  - project2-web-hook-application-onboarding-secret.yaml

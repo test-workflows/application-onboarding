@@ -1,0 +1,47 @@
+
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+    creationTimestamp: null
+    name: project2-run-clone-build-push
+spec:
+    resourcetemplates:
+        - apiVersion: tekton.dev/v1beta1
+          kind: PipelineRun
+          metadata:
+            creationTimestamp: null
+            name: project2-clone-build-push-$(uid)
+          spec:
+            params:
+                - name: image-registry-url
+                  value: quay.io/project2
+            pipelineRef:
+                name: project2-clone-build-push
+            serviceAccountName: project2-clone-push
+            workspaces:
+                - name: project2-shared-data
+                  volumeClaimTemplate:
+                    metadata:
+                        creationTimestamp: null
+                    spec:
+                        accessModes:
+                            - ReadWriteOnce
+                        resources:
+                            requests:
+                                storage: 1Gi
+                        storageClassName: default
+                    status: {}
+                - name: git-ssh-credentials
+                  secret:
+                    secretName: sshkeys
+                - name: git-basic-auth-credentials
+                  secret:
+                    secretName: '""'
+                - name: registry-credentials
+                  secret:
+                    secretName: '""'
+          status: {}
+status: {}
+
+...
